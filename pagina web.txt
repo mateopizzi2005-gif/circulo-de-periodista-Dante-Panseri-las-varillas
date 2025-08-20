@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario Digital Moderno</title>
+  <link rel="icon" href="favicon.ico">
+  <!-- Tipografías elegantes tipo periódico -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Lora', serif; }
+    h1,h2,h3 { font-family: 'Playfair Display', serif; }
+    .carousel-slide { display: none; }
+    .carousel-slide.active { display: block; }
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background-color: #1D4ED8; color: white; padding: 0.5rem 1rem; border-radius: 9999px; cursor: pointer; display: none; transition: background 0.3s; }
+    .back-to-top:hover { background-color: #2563EB; }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+  <!-- HEADER -->
+  <header class="border-b border-gray-200 bg-white dark:bg-gray-800 dark:border-gray-700 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="flex flex-col items-center md:items-start">
+        <div class="flex items-center space-x-2">
+          <span class="text-4xl font-serif dark:text-white text-black">𝔇</span>
+          <span class="text-2xl font-serif dark:text-white text-black tracking-tight">iario Digital</span>
+        </div>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Noticias confiables • Análisis profundo • Opinión seria</p>
+      </div>
+      <button id="darkModeToggle" class="mt-4 md:mt-0 px-4 py-2 border rounded text-sm font-semibold bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 transition">
+        🌙 Modo oscuro
+      </button>
+    </div>
+    <nav class="border-t border-gray-200 bg-gray-100 dark:bg-gray-800 dark:border-gray-700">
+      <div class="max-w-7xl mx-auto px-6 py-3 flex justify-center space-x-6 text-sm font-semibold">
+        <a href="#politica" class="hover:text-blue-700 dark:hover:text-blue-400">Política</a>
+        <a href="#economia" class="hover:text-blue-700 dark:hover:text-blue-400">Economía</a>
+        <a href="#mundo" class="hover:text-blue-700 dark:hover:text-blue-400">Mundo</a>
+        <a href="#cultura" class="hover:text-blue-700 dark:hover:text-blue-400">Cultura</a>
+        <a href="#deportes" class="hover:text-blue-700 dark:hover:text-blue-400">Deportes</a>
+        <a href="#opinion" class="hover:text-blue-700 dark:hover:text-blue-400">Opinión</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PORTADA CON CARRUSEL -->
+  <main class="max-w-7xl mx-auto px-6 py-6 grid lg:grid-cols-4 gap-10">
+
+    <!-- Carrusel de portada -->
+    <section class="lg:col-span-3 relative">
+      <div class="carousel-slide active bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img src="https://via.placeholder.com/800x400?text=Noticia+1" alt="Noticia 1" class="w-full h-96 object-cover">
+        <div class="p-6">
+          <h1 class="text-4xl font-bold dark:text-white mb-3">Noticia Principal 1</h1>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">Resumen de la noticia más importante del día 1.</p>
+          <a href="#" class="text-blue-700 dark:text-blue-400 font-semibold hover:underline decoration-2">Leer más →</a>
+        </div>
+      </div>
+      <div class="carousel-slide bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img src="https://via.placeholder.com/800x400?text=Noticia+2" alt="Noticia 2" class="w-full h-96 object-cover">
+        <div class="p-6">
+          <h1 class="text-4xl font-bold dark:text-white mb-3">Noticia Principal 2</h1>
+          <p class="text-gray-700 dark:text-gray-300 mb-4">Resumen de la noticia más importante del día 2.</p>
+          <a href="#" class="text-blue-700 dark:text-blue-400 font-semibold hover:underline decoration-2">Leer más →</a>
+        </div>
+      </div>
+      <!-- Botones carrusel -->
+      <button id="prevSlide" class="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">‹</button>
+      <button id="nextSlide" class="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition">›</button>
+    </section>
+
+    <!-- Sidebar dinámico -->
+    <aside class="hidden lg:block bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 space-y-4 hover:shadow-xl transition-shadow duration-300 overflow-y-auto max-h-[38rem]">
+      <h3 class="font-bold text-lg dark:text-white mb-2">Últimas noticias</h3>
+      <ul class="text-sm text-gray-700 dark:text-gray-300 space-y-3">
+        <li class="border-b dark:border-gray-700 pb-2"><a href="#" class="hover:underline font-semibold">Titular 1</a></li>
+        <li class="border-b dark:border-gray-700 pb-2"><a href="#" class="hover:underline">Titular 2</a></li>
+        <li class="border-b dark:border-gray-700 pb-2"><a href="#" class="hover:underline">Titular 3</a></li>
+        <li class="border-b dark:border-gray-700 pb-2"><a href="#" class="hover:underline">Titular 4</a></li>
+        <li><a href="#" class="hover:underline">Titular 5</a></li>
+      </ul>
+    </aside>
+
+    <!-- SECCIONES -->
+    <section id="politica" class="lg:col-span-3 space-y-6 mt-10">
+      <h2 class="text-2xl font-bold dark:text-white mb-2">Política</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Política 1" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Reformas importantes aprobadas</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Resumen de reformas recientes.</p>
+          </div>
+        </article>
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Política 2" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Elecciones locales: Resultados</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Cobertura y análisis de votos.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="economia" class="lg:col-span-3 space-y-6 mt-10">
+      <h2 class="text-2xl font-bold dark:text-white mb-2">Economía</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Economía 1" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Mercados financieros hoy</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Resumen de la bolsa y divisas.</p>
+          </div>
+        </article>
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Economía 2" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Nuevas políticas fiscales</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Impacto económico en la ciudadanía.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="mundo" class="lg:col-span-3 space-y-6 mt-10">
+      <h2 class="text-2xl font-bold dark:text-white mb-2">Mundo</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Mundo 1" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Conflictos internacionales</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Últimas noticias globales.</p>
+          </div>
+        </article>
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Mundo 2" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Acuerdos diplomáticos recientes</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Análisis de relaciones internacionales.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="cultura" class="lg:col-span-3 space-y-6 mt-10">
+      <h2 class="text-2xl font-bold dark:text-white mb-2">Cultura</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Cultura 1" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Exposiciones y museos</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Reseñas culturales y arte local.</p>
+          </div>
+        </article>
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Cultura 2" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Eventos culturales internacionales</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Cobertura de festivales y conciertos.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="deportes" class="lg:col-span-3 space-y-6 mt-10">
+      <h2 class="text-2xl font-bold dark:text-white mb-2">Deportes</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Deportes 1" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Resultados deportivos</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Resumen de los últimos partidos.</p>
+          </div>
+        </article>
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <img src="https://via.placeholder.com/400x200" alt="Deportes 2" class="w-full h-44 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Torneos internacionales</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Calendario y análisis deportivo.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="opinion" class="lg:col-span-3 space-y-6 mt-10 mb-20">
+      <h2 class="text-2xl font-bold dark:text-white mb-2">Opinión</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Editorial del día</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Opinión y análisis de los acontecimientos recientes.</p>
+          </div>
+        </article>
+        <article class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg dark:text-white mb-1">Columnistas invitados</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-sm">Perspectivas diversas sobre política y sociedad.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <div id="backToTop" class="back-to-top">↑ Arriba</div>
+
+  <!-- SCRIPT INTERACTIVO -->
+  <script>
+    // Modo oscuro persistente
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const html = document.documentElement;
+    if(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+      html.classList.add('dark');
+    }
+    const updateTheme = () => {
+      toggleBtn.textContent = html.classList.contains('dark') ? "☀️ Modo claro" : "🌙 Modo oscuro";
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    }
+    toggleBtn.addEventListener('click', ()=>{
+      html.classList.toggle('dark');
+      updateTheme();
+    });
+    updateTheme();
+
+    // Carrusel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    const showSlide = index => {
+      slides.forEach((slide,i)=>slide.classList.toggle('active',i===index));
+    }
+    document.getElementById('prevSlide').addEventListener('click',()=>{ currentSlide=(currentSlide-1+totalSlides)%totalSlides; showSlide(currentSlide); });
+    document.getElementById('nextSlide').addEventListener('click',()=>{ currentSlide=(currentSlide+1)%totalSlides; showSlide(currentSlide); });
+    setInterval(()=>{ currentSlide=(currentSlide+1)%totalSlides; showSlide(currentSlide); }, 8000);
+
+    // Botón volver arriba
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', ()=>{ backToTop.style.display = window.scrollY>300?'block':'none'; });
+    backToTop.addEventListener('click', ()=>{ window.scrollTo({ top:0, behavior:'smooth' }); });
+  </script>
+</body>
+</html>
